@@ -1,11 +1,13 @@
 <template>
   <section class="container">
     <div>
-      <h1 class="title">
-        prueba_nuxtjs
+      <h1>
+        prueba_nuxtjs + {{ norris.value }}
       </h1>
-      <div class="links">
-        <p>{{ norris.value }}</p>
+      <div class="links" v-for="norris in norrisArray" :key="norris.value + '_'">
+        <p>
+          {{ norris.value }}
+        </p>
       </div>
     </div>
   </section>
@@ -16,6 +18,7 @@ import AppLogo from '~/components/AppLogo.vue';
 
 // import { store } from 'vuex';
 let test = '';
+let test2 = [];
 
 export default {
   components: {
@@ -23,13 +26,19 @@ export default {
   },
   data() {
     return {
-      norris: test
+      norris: test,
+      norrisArray: test2
     }
   },
   async middleware() {
     const response = await fetch("https://api.chucknorris.io/jokes/random");
     const data = await response.json();
     test = data;
+    for (let i = 0; i <= 2; i++) {
+      const response = await fetch("https://api.chucknorris.io/jokes/random");
+      const data = await response.json();
+      test2.push(data);
+    }
   },
   head() {
     return {
@@ -43,11 +52,17 @@ export default {
     async getSentenceChuck() {
       const response = await fetch("https://api.chucknorris.io/jokes/random");
       const data = await response.json();
+      // const data = {value: Math.floor(Math.random() * 100) + 1};
       return data;
     }
   },
   async mounted() {
     this.norris = await this.getSentenceChuck();
+    for (let i = 0; i <= 2; i++) {
+      const response = await fetch("https://api.chucknorris.io/jokes/random");
+      const data = await response.json();
+      this.norrisArray.push(data);
+    }
   }
 }
 </script>
