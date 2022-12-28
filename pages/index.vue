@@ -4,6 +4,9 @@
       <h1>
         prueba_nuxtjs + {{ norris.value }}
       </h1>
+      <h2>
+        {{ asds }}
+      </h2>
       <div class="links" v-for="norris in norrisArray" :key="norris.value + '_'">
         <p>
           {{ norris.value }}
@@ -27,13 +30,15 @@ export default {
   data() {
     return {
       norris: test,
-      norrisArray: test2
+      norrisArray: test2,
+      asds: asd
     }
   },
   async middleware() {
     const response = await fetch("https://api.chucknorris.io/jokes/random");
     const data = await response.json();
-    test = data;
+    const asd = this.$router.qiery.name;
+    test = data +  ' - ' + this.$router.qiery.name;
     for (let i = 0; i <= 2; i++) {
       const response = await fetch("https://api.chucknorris.io/jokes/random");
       const data = await response.json();
