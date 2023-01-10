@@ -35,7 +35,8 @@ module.exports = {
       }
     }
   },
-  router: {
-    middleware: ['norrisApi']
-  }
+  // COMUN PARA TODAS LAS VISTAS
+  // router: {
+  //   middleware: ['clientApi', 'processApi']
+  // }
 }
