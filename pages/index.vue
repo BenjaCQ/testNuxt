@@ -31,7 +31,7 @@ export default {
       // processArray: processMiddleware
     }
   },
-  // middleware: ['clientApi', 'processApi'],
+  middleware: ['clientApi', 'processApi'],
   // async middleware() {
   //   const response = await fetch("https://api.chucknorris.io/jokes/random");
   //   // clientNameMiddleware = await response.json();
