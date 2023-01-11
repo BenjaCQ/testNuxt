@@ -36,7 +36,7 @@ module.exports = {
     }
   },
   // COMUN PARA TODAS LAS VISTAS
-  // router: {
-  //   middleware: ['clientApi', 'processApi']
-  // }
+   router: {
+     middleware: ['clientApi', 'processApi']
+   }
 }
